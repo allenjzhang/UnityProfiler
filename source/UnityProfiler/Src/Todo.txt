@@ -1,0 +1,9 @@
+﻿1. Add default WAD logger
+2. Add default Hadoop logger
+3. Viewer
+5. config provider
+6. Azure config provider
+7. App.config config provider
+
+
+Add intelligent Interface vs V.M. interception mode.
