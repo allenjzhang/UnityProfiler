@@ -7,7 +7,6 @@ using Microsoft.Practices.Unity.InterceptionExtension;
 
 namespace UnityProfileLib
 {
-	public delegate void ProfileEventHandler(object sender, ProfileEventArg e);
 	public class ProfileInterceptorBehavior : IInterceptionBehavior
 	{
 		internal static ConcurrentDictionary<string, bool> ProfileSettingCache = new ConcurrentDictionary<string, bool>();
