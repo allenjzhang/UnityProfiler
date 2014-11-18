@@ -1,6 +1,8 @@
-﻿using System.Web.Mvc;
-using Newtonsoft.Json;
-using ProfileLogViewer.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace ProfileLogViewer.Controllers
 {
@@ -11,17 +13,18 @@ namespace ProfileLogViewer.Controllers
 			return View();
 		}
 
-		[HttpGet]
-		public string GetProfileData()
+		public ActionResult About()
 		{
-			ProfileStat p = new ProfileStat()
-			{
-				AverageDuration = 100,
-				MethodName = "Test.Bar",
-				TimeStamp = 123456,
-				TotalCount = 10
-			};
-			return JsonConvert.SerializeObject(p);
+			ViewBag.Message = "Your application description page.";
+
+			return View();
+		}
+
+		public ActionResult Contact()
+		{
+			ViewBag.Message = "Your contact page.";
+
+			return View();
 		}
 	}
 }

@@ -46,3 +46,7 @@ source/UnityProfiler/Src/bin/
 source/UnityProfiler/Src/obj/
 source/ProfileLogViewer/Src/bin/
 source/ProfileLogViewer/Src/obj/
+*.user
+*.suo
+*.user
+*.user
