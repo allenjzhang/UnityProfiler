@@ -8,9 +8,7 @@
 <div id="container" style="height: 400px; min-width: 310px"></div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-    </div>
+    <span id="debugtext">debug</span>
 </div>
 
 <script type='text/javascript'>
@@ -1876,12 +1874,9 @@
         [1368057600000,456.77],
         [1368144000000,452.97]
     ]
-
-        //$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+        $.getJSON('http://localhost:60770/api/profiledata/stats/5', function (data) {
             // Create the chart
             $('#container').highcharts('StockChart', {
-
-
                 rangeSelector: {
                     selected: 1
                 },
@@ -1892,13 +1887,15 @@
 
                 series: [{
                     name: 'Test.Bar',
-                    data: data1,
+                    data: data,
                     tooltip: {
                         valueDecimals: 2
                     }
                 }]
             });
-        //});
+
+            document.getElementById("debugtext").innerText = data;
+        });
 
     });
 </script>
