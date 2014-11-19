@@ -11,6 +11,10 @@ namespace ProfileLogViewer
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+	        config.Routes.MapHttpRoute(
+				name: "ProfileApi",
+				routeTemplate: "api/profiledata/{action}/");
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{action}/{id}",
