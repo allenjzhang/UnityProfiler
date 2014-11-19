@@ -1,7 +1,10 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
+using System.Web.Script.Services;
 
 namespace ProfileLogViewer.Controllers
 {
+	[ScriptService]
     public class ProfileDataController : ApiController
     {
 		//// GET: api/ProfileData
@@ -10,26 +13,48 @@ namespace ProfileLogViewer.Controllers
 		//	return new string[] { "value1", "value2" };
 		//}
 
-        // GET: api/ProfileData/test.bar
-		[HttpGet]
-        public string Stats(string id)
-        {
-			string x =
-							"[1147651200000,67.79"
-							+ "[1147737600000,64.98"
-							+ "1147824000000,65.26"
-							+ "1147910400000,63.18"
-							+ "1147996800000,64.51"
-							+ "1148256000000,63.38"
-							+ "1148342400000,63.15"
-							+ "1148428800000,63.34"
-							+ "1148515200000,64.33"
-							+ "1148601600000,63.55"
-							+ "1148947200000,61.22"
-							+ "1149033600000,59.77]]";
-            return x;
-        }
+        // GET: api/ProfileData/Stats/test.bar
+		[HttpGet]		
+		public double[][] ProfileStats(string id)
+		{
+			Random r = new Random();
+			int numDays = (int) (DateTime.Now - DateTime.Parse("2012/01/01")).TotalDays;
+			double[][] data = new double[numDays][];
 
+			for (int i = 0; i < numDays; i++)
+			{
+				data[i] = new double[6];
+				data[i][0] = DateTime.Parse("2012/01/01").AddDays(i).Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds;
+				data[i][1] = 100;
+				data[i][2] = 200;
+				data[i][3] = 300;
+				data[i][4] = 150;
+				data[i][5] = r.NextDouble() * 1000;
+			}
+
+			return data;
+			//string x = JsonConvert.SerializeObject(data);
+
+
+			//StringBuilder sb = new StringBuilder();
+
+			//double numDays = (DateTime.Now - DateTime.Parse("2012/01/01")).TotalDays;
+
+			//sb.Append("[");
+			//for (double i = 0; i <= numDays; i++)
+			//{
+			//	sb.Append("[");
+			//	sb.Append(DateTime.Parse("2012/01/01").AddDays(i).Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds);
+			//	sb.Append(",");
+			//	sb.Append("100,100,100,");
+			//	sb.Append(r.NextDouble() * 1000);
+			//	sb.Append("]");
+			//	if (i != numDays)
+			//		sb.Append(",");
+			//}
+			//sb.Append("]");
+			//return x;
+		}
 
     }
 }

@@ -9,5 +9,9 @@ namespace ProfileLogViewer.Controllers
 			return View();
 		}
 
+		public ActionResult DualChart()
+		{
+			return View();
+		}
 	}
 }
